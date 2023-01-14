@@ -1,13 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class SplashScreenController extends GetxController {
-  //TODO: Implement SplashScreenController
-  final showhidepw = false.obs;
-  changeEyes() => showhidepw.toggle();
-
+class RegisterController extends GetxController {
+  //TODO: Implement RegisterController
+  final eyes = false.obs;
+ 
   final count = 0.obs;
   TextEditingController password = TextEditingController();
+
   @override
   void onInit() {
     super.onInit();
@@ -21,4 +23,9 @@ class SplashScreenController extends GetxController {
   @override
   void onClose() {}
   void increment() => count.value++;
+  changeEye() {
+    log(eyes.toString());
+    eyes.toggle();
+    log(eyes.toString());
+  }
 }
