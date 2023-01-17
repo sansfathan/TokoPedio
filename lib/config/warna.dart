@@ -6,6 +6,7 @@ Color judul = const Color(0xff1B1B1B); //100%
 Color subjudul = const Color(0x801B1B1B); //50%
 Color border = const Color(0x401B1B1B);
 Color bgBang = const Color(0x0D0D8173);
+Color bgNav = const Color(0xFF03A759);
 
 
 // 100% — FF 

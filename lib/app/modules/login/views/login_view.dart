@@ -109,7 +109,7 @@ class LoginView extends GetView<LoginController> {
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: bgLogin2),
-                            onPressed: () {},
+                            onPressed: () => Get.toNamed("/home"),
                             child: Text(
                               "Login",
                               style: TextStyle(fontSize: 18),
