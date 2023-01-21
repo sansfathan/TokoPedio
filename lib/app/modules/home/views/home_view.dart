@@ -1052,7 +1052,26 @@ class HomeView extends GetView<HomeController> {
                       'Jakarta Pusat'),
                 ],
               ),
-            )
+            ),
+            SizedBox(
+              height: tinggi * 0.02,
+            ),
+            Container(
+              width: lebar,
+              height: 40,
+              margin: EdgeInsets.symmetric(horizontal: 15),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                  border: Border.all(width: 1, color: judul2)),
+              child: Text(
+                'Lihat Selebihnya',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+            ),
+            SizedBox(
+              height: tinggi * 0.02,
+            ),
           ],
         ),
       ),
