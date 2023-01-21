@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 class HomePageController extends GetxController {
+  // ignore: todo
   //TODO: Implement HomePageController
 
   final count = 0.obs;

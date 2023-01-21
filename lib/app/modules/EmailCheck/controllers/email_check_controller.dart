@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 class EmailCheckController extends GetxController {
+  // ignore: todo
   //TODO: Implement EmailCheckController
 
   final count = 0.obs;

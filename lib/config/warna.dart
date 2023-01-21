@@ -3,11 +3,25 @@ import 'package:flutter/material.dart';
 Color bgLogin = const Color(0xff38B48D); //100%
 Color bgLogin2 = const Color(0xff0D8173);
 Color judul = const Color(0xff1B1B1B); //100%
+Color judul2 = const Color(0xff6B6B6B); //100%
 Color subjudul = const Color(0x801B1B1B); //50%
 Color border = const Color(0x401B1B1B);
 Color bgBang = const Color(0x0D0D8173);
 Color bgNav = const Color(0xFF03A759);
-
+Color bgRed = const Color(0xffD6001C);
+Color bgRedB = const Color(0x1aD6001C);
+Color bgBgan = const Color(0xff01A0C6);
+Color bgBgan2 = const Color(0xff01AA6C);
+Color star = const Color(0xffFFC400);
+Color bgPolos = const Color(0xffEEEEEE);
+Color bgColeb1 = const Color(0xffA92176);
+Color bgColeb2 = const Color(0xffFA38B1);
+Color bgColeb3 = const Color(0xff462180);
+Color bgColeb4 = const Color(0xff8A40FF);
+Color bgColeb5 = const Color(0xff0C87A9);
+Color bgColeb6 = const Color(0xff3BD5FF);
+Color bgColeb7 = const Color(0xffEE9B12);
+Color bgColeb8 = const Color(0xffFFBE53);
 
 // 100% — FF 
 // 95% — F2 
