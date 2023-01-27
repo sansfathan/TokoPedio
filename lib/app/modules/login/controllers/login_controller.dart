@@ -7,6 +7,7 @@ class LoginController extends GetxController {
   changeEyes() => showhidepw.toggle();
 
   final count = 0.obs;
+  TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   @override
   void onInit() {

@@ -3,12 +3,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:tokopedia/app/controllers/auth_controller_controller.dart';
 import 'package:tokopedia/config/warna.dart';
 
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
   final controller = Get.put(LoginController());
+  final authC = Get.put(AuthControllerController());
   Widget build(BuildContext context) {
     double tinggi = MediaQuery.of(context).size.height;
     double lebar = MediaQuery.of(context).size.width;
@@ -50,6 +52,7 @@ class LoginView extends GetView<LoginController> {
                       Container(
                         margin: EdgeInsets.only(top: 15),
                         child: TextField(
+                          controller: controller.email,
                           decoration: InputDecoration(
                               labelText: "Enter Your Email",
                               enabledBorder: OutlineInputBorder(
@@ -109,7 +112,8 @@ class LoginView extends GetView<LoginController> {
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: bgLogin2),
-                            onPressed: () => Get.toNamed("/home"),
+                            onPressed: () => authC.login(controller.email.text,
+                                controller.password.text),
                             child: Text(
                               "Login",
                               style: TextStyle(fontSize: 18),

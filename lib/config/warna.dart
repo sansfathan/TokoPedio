@@ -8,12 +8,13 @@ Color subjudul = const Color(0x801B1B1B); //50%
 Color border = const Color(0x401B1B1B);
 Color bgBang = const Color(0x0D0D8173);
 Color bgNav = const Color(0xFF03A759);
+Color bgNav2 = const Color(0xA103A7591A);
 Color bgRed = const Color(0xffD6001C);
 Color bgRedB = const Color(0x1aD6001C);
 Color bgBgan = const Color(0xff01A0C6);
 Color bgBgan2 = const Color(0xff01AA6C);
 Color star = const Color(0xffFFC400);
-Color bgPolos = const Color(0xffEEEEEE);
+Color bgPolos1 = const Color(0x4dEEEEEE);
 Color bgColeb1 = const Color(0xffA92176);
 Color bgColeb2 = const Color(0xffFA38B1);
 Color bgColeb3 = const Color(0xff462180);
@@ -22,6 +23,7 @@ Color bgColeb5 = const Color(0xff0C87A9);
 Color bgColeb6 = const Color(0xff3BD5FF);
 Color bgColeb7 = const Color(0xffEE9B12);
 Color bgColeb8 = const Color(0xffFFBE53);
+Color bgColeb9 = const Color(0xb31b1b1b);
 
 // 100% — FF 
 // 95% — F2 

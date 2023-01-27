@@ -6,6 +6,8 @@ import 'package:tokopedia/app/modules/Register/bindings/register_binding.dart';
 import 'package:tokopedia/app/modules/Register/views/register_view.dart';
 import 'package:tokopedia/app/modules/ResetPassword/bindings/reset_password_binding.dart';
 import 'package:tokopedia/app/modules/ResetPassword/views/reset_password_view.dart';
+import 'package:tokopedia/app/modules/detail/bindings/detail_binding.dart';
+import 'package:tokopedia/app/modules/detail/views/detail_view.dart';
 import 'package:tokopedia/app/modules/home/bindings/home_binding.dart';
 import 'package:tokopedia/app/modules/home/views/home_view.dart';
 import 'package:tokopedia/app/modules/homePage/bindings/home_page_binding.dart';
@@ -57,6 +59,11 @@ class AppPages {
       name: _Paths.HOME_PAGE,
       page: () => HomePageView(),
       binding: HomePageBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL,
+      page: () => DetailView(),
+      binding: DetailBinding(),
     ),
   ];
 }
