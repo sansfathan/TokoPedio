@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:tokopedia/app/controllers/auth_controller_controller.dart';
 import 'package:tokopedia/config/warna.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -96,7 +97,7 @@ class LoginView extends GetView<LoginController> {
                         alignment: Alignment.topRight,
                         margin: EdgeInsets.only(top: 10),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () => Get.toNamed(Routes.RESET_PASSWORD),
                           child: Text(
                             "Fogot Password",
                             style: TextStyle(
@@ -114,6 +115,7 @@ class LoginView extends GetView<LoginController> {
                                 backgroundColor: bgLogin2),
                             onPressed: () => authC.login(controller.email.text,
                                 controller.password.text),
+                            // onPressed: () => Get.toNamed(Routes.HOME_ADMIN),
                             child: Text(
                               "Login",
                               style: TextStyle(fontSize: 18),
@@ -159,10 +161,14 @@ class LoginView extends GetView<LoginController> {
                                   child: Row(
                                     children: [
                                       Image.asset("image/Facebook.png"),
-                                      Text(
-                                        "Facebook",
-                                        style: TextStyle(
-                                            fontSize: 20, color: Colors.black),
+                                      Container(
+                                        margin: EdgeInsets.only(left: 5),
+                                        child: Text(
+                                          "Facebook",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.black),
+                                        ),
                                       )
                                     ],
                                   )),
@@ -173,14 +179,18 @@ class LoginView extends GetView<LoginController> {
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white),
-                                  onPressed: () {},
+                                  onPressed: () => authC.signInWithGoogle(),
                                   child: Row(
                                     children: [
                                       Image.asset("image/Google.png"),
-                                      Text(
-                                        "Facebook",
-                                        style: TextStyle(
-                                            fontSize: 20, color: Colors.black),
+                                      Container(
+                                        margin: EdgeInsets.only(left: 5),
+                                        child: Text(
+                                          "Google",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.black),
+                                        ),
                                       )
                                     ],
                                   )),

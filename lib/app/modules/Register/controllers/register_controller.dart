@@ -4,10 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
-  //TODO: Implement RegisterController
+  
   final eyes = false.obs;
  
   final count = 0.obs;
+  TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
   @override

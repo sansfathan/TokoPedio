@@ -1,10 +1,12 @@
 // ignore_for_file: unused_local_variable
 
+import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:tokopedia/config/warna.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/email_check_controller.dart';
 
 class EmailCheckView extends GetView<EmailCheckController> {
@@ -46,7 +48,16 @@ class EmailCheckView extends GetView<EmailCheckController> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              Container(
+              InkWell(onTap: () async {
+                await LaunchApp.openApp(
+                    androidPackageName: 'com.google.android.gm',
+                    iosUrlScheme: 'googlegmail://',
+                    appStoreLink:
+                        'itms-apps://apps.apple.com/us/app/gmail-email-by-google/id422689480',
+                    openStore: true);
+                    
+              },
+              child: Container(
                 margin: EdgeInsets.only(top: 35),
                 width: MediaQuery.of(context).size.width * 0.5,
                 height: 60,
@@ -59,9 +70,9 @@ class EmailCheckView extends GetView<EmailCheckController> {
                       "Open Email App",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     )),
-              ),
+              ),),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () => Get.toNamed(Routes.LOGIN),
                   child: Text(
                     'Skip, I’ll confirm later',
                     style: TextStyle(

@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tokopedia/config/warna.dart';
 
+import '../../../controllers/auth_controller_controller.dart';
 import '../controllers/reset_password_controller.dart';
 
 class ResetPasswordView extends GetView<ResetPasswordController> {
+  final authC = Get.put(AuthControllerController());
+  final forgotC = Get.put(ResetPasswordController());
   @override
   Widget build(BuildContext context) {
     double tinggi = MediaQuery.of(context).size.height;
@@ -41,10 +44,10 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 20, bottom: 30),
-                    width: 290,
+                    width: 350,
                     child: Text(
                       "Enter the email associated with your account and we'll send an email with instructions to reset your password.",
-                      style: TextStyle(color: subjudul),
+                      style: TextStyle(color: subjudul, fontSize: 15),
                     ),
                   ),
                   Container(
@@ -57,6 +60,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                   Container(
                     margin: EdgeInsets.only(top: 15, bottom: 15),
                     child: TextField(
+                      controller: forgotC.email,
                       decoration: InputDecoration(
                           labelText: "Enter Your Email",
                           enabledBorder: OutlineInputBorder(
@@ -73,7 +77,8 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                     child: ElevatedButton(
                         style:
                             ElevatedButton.styleFrom(backgroundColor: bgLogin2),
-                        onPressed: () => Get.toNamed("/login"),
+                        onPressed: () =>
+                            authC.resetPassword(controller.email.text),
                         child: Text(
                           "Send Instructions",
                           style: TextStyle(fontSize: 18),

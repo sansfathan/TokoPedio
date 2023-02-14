@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:tokopedia/app/controllers/auth_controller_controller.dart';
 import 'package:tokopedia/config/warna.dart';
 
 import '../controllers/register_controller.dart';
 
 class RegisterView extends GetView<RegisterController> {
+  final authC = Get.put(AuthControllerController());
   final controller = Get.put(RegisterController());
   @override
   Widget build(BuildContext context) {
@@ -59,6 +61,7 @@ class RegisterView extends GetView<RegisterController> {
                         Container(
                           margin: EdgeInsets.only(top: 15, bottom: 15),
                           child: TextField(
+                            controller: controller.email,
                             decoration: InputDecoration(
                                 labelText: "Enter Your Email",
                                 enabledBorder: OutlineInputBorder(
@@ -77,6 +80,7 @@ class RegisterView extends GetView<RegisterController> {
                         Container(
                           margin: EdgeInsets.only(bottom: 20),
                           child: TextField(
+                              // controller: controller.password,
                               keyboardType: TextInputType.emailAddress,
                               decoration: InputDecoration(
                                   hintText: "Enter Your Mobile Phone",
@@ -147,7 +151,9 @@ class RegisterView extends GetView<RegisterController> {
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: bgLogin2),
-                              onPressed: () {},
+                              onPressed: () => authC.signUp(
+                                  controller.email.text,
+                                  controller.password.text),
                               child: Text(
                                 "Sign Up",
                                 style: TextStyle(fontSize: 18),

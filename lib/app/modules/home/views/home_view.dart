@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import
+
 import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
@@ -5,11 +7,14 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'package:tokopedia/app/controllers/auth_controller_controller.dart';
 import 'package:tokopedia/config/warna.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
+  final logOut = Get.put(AuthControllerController());
   @override
   Widget build(BuildContext context) {
     double tinggi = MediaQuery.of(context).size.height;
@@ -56,7 +61,9 @@ class HomeView extends GetView<HomeController> {
                               ),
                               Image.asset("image/cart.png"),
                               Image.asset("image/Bell.png"),
-                              Image.asset("image/Menu.png")
+                              InkWell(
+                                  onTap: () => logOut.logOut(),
+                                  child: Image.asset("image/Menu.png"))
                             ],
                           ),
                         ),
@@ -246,103 +253,109 @@ class HomeView extends GetView<HomeController> {
 
                       child: Row(
                         children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(30, 10, 0, 10),
-                            width: 200,
-                            height: tinggi * 0.50,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  // margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
-                                  // padding: EdgeInsets.fromLTRB(left, top, right, bottom),
-                                  width: 190,
-                                  height: 160,
-                                  child: Image.asset(
-                                    "image/Masker.png",
-                                    // fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(
-                                    10,
-                                    10,
-                                    0,
-                                    0,
-                                  ),
-                                  child: Text(
-                                    "Rp 1.000",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.all(2),
-                                      margin: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                                      width: 30,
-                                      height: 20,
-                                      decoration: BoxDecoration(color: bgRedB),
-                                      child: Text(
-                                        "92%",
-                                        style: TextStyle(color: bgRed),
-                                      ),
+                          InkWell(
+                            onTap: () => Get.toNamed(Routes.DETAIL),
+                            child: Container(
+                              margin: EdgeInsets.fromLTRB(30, 10, 0, 10),
+                              width: 200,
+                              height: tinggi * 0.50,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    // margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
+                                    // padding: EdgeInsets.fromLTRB(left, top, right, bottom),
+                                    width: 190,
+                                    height: 160,
+                                    child: Image.asset(
+                                      "image/Masker.png",
+                                      // fit: BoxFit.cover,
                                     ),
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(5, 5, 0, 0),
-                                      child: Text(
-                                        "Rp 12.546",
-                                        style: TextStyle(
-                                            color: subjudul,
-                                            decoration:
-                                                TextDecoration.lineThrough),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                                      child: Image.asset("image/verify.png"),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                      10,
+                                      10,
+                                      0,
+                                      0,
                                     ),
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(5, 5, 0, 0),
-                                      child: Text(
-                                        "Kab. Tangerang",
-                                        style: TextStyle(color: subjudul),
-                                      ),
+                                    child: Text(
+                                      "Rp 1.000",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20),
                                     ),
-                                  ],
-                                ),
-                                Container(
-                                  // margin: EdgeInsets.only(bottom: 10, top: 10),
-                                  // padding: EdgeInsets.fromLTRB(left, top, right, bottom),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Container(
+                                        padding: EdgeInsets.all(2),
+                                        margin:
+                                            EdgeInsets.fromLTRB(10, 5, 0, 0),
+                                        width: 30,
+                                        height: 20,
+                                        decoration:
+                                            BoxDecoration(color: bgRedB),
+                                        child: Text(
+                                          "92%",
+                                          style: TextStyle(color: bgRed),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(5, 5, 0, 0),
+                                        child: Text(
+                                          "Rp 12.546",
+                                          style: TextStyle(
+                                              color: subjudul,
+                                              decoration:
+                                                  TextDecoration.lineThrough),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Container(
+                                        margin:
+                                            EdgeInsets.fromLTRB(10, 5, 0, 0),
+                                        child: Image.asset("image/verify.png"),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(5, 5, 0, 0),
+                                        child: Text(
+                                          "Kab. Tangerang",
+                                          style: TextStyle(color: subjudul),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    // margin: EdgeInsets.only(bottom: 10, top: 10),
+                                    // padding: EdgeInsets.fromLTRB(left, top, right, bottom),
 
-                                  margin: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                                  child: StepProgressIndicator(
-                                    totalSteps: 100,
-                                    currentStep: 80,
-                                    size: 5,
-                                    padding: 0,
-                                    selectedColor: bgRed,
-                                    unselectedColor: Color(0xffeeeeee),
-                                    roundedEdges: Radius.circular(2),
+                                    margin: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                                    child: StepProgressIndicator(
+                                      totalSteps: 100,
+                                      currentStep: 80,
+                                      size: 5,
+                                      padding: 0,
+                                      selectedColor: bgRed,
+                                      unselectedColor: Color(0xffeeeeee),
+                                      roundedEdges: Radius.circular(2),
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(top: 15, left: 10),
-                                  child: Text(
-                                    "Segera Habis",
-                                    style: TextStyle(color: subjudul),
-                                  ),
-                                )
-                              ],
+                                  Container(
+                                    margin: EdgeInsets.only(top: 15, left: 10),
+                                    child: Text(
+                                      "Segera Habis",
+                                      style: TextStyle(color: subjudul),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                           Container(
@@ -1081,7 +1094,7 @@ class HomeView extends GetView<HomeController> {
 
 Widget CustomMenu({icon, text}) {
   return Container(
-    width: 65,
+    width: 60,
     child: Column(
       children: [
         Container(child: Image.asset(icon)),

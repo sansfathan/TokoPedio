@@ -14,7 +14,7 @@ class SplashScreenView extends GetView<SplashScreenController> {
       body: Container(
         height: tinggi,
         padding: EdgeInsets.fromLTRB(20, 50, 30, 20),
-          // padding: EdgeInsets.fromLTRB(left, top, right, bottom),
+        // padding: EdgeInsets.fromLTRB(left, top, right, bottom),
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -58,7 +58,7 @@ class SplashScreenView extends GetView<SplashScreenController> {
                     style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                   SizedBox(
-                    height: 70,
+                    height: 10,
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width * 0.9,
@@ -72,8 +72,11 @@ class SplashScreenView extends GetView<SplashScreenController> {
                           style: TextStyle(color: bgLogin, fontSize: 20),
                         )),
                   ),
+                  // SizedBox(
+                  //   height: 70,
+                  // ),
                   SizedBox(
-                    height: 60,
+                    height: 70,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

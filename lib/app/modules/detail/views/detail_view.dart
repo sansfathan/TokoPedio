@@ -184,44 +184,40 @@ class DetailView extends GetView<DetailController> {
               Container(
                 margin: EdgeInsets.only(top: 20),
                 width: lebar,
-                height: 30,
+                height: 7,
                 decoration: BoxDecoration(color: subjudul),
               ),
               Container(
                 // margin: EdgeInsets.fromLTRB(left, top, right, bottom),
                 margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: Column(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: 10, top: 10),
-                          child: Text(
-                            "Detail Produk",
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
+                    Container(
+                      margin: EdgeInsets.only(left: 8, top: 10, bottom: 10),
+                      child: Text(
+                        "Detail Produk",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 10, left: 10),
                       child: Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
                             // margin: EdgeInsets.fromLTRB(left, top, right, bottom),
-                            margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                            margin: EdgeInsets.fromLTRB(0, 0, 30, 0),
                             child: Text(
                               "Berat Satuan",
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: 20, color: subjudul),
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 50),
+                            margin: EdgeInsets.only(right: 175),
                             child: Text(
                               "200g",
                               style: TextStyle(fontSize: 20),
@@ -240,18 +236,18 @@ class DetailView extends GetView<DetailController> {
                     Container(
                       margin: EdgeInsets.only(top: 10, left: 10),
                       child: Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
                             // margin: EdgeInsets.fromLTRB(left, top, right, bottom),
                             margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
                             child: Text(
                               "Etalase",
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: 20, color: subjudul),
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 50),
+                            margin: EdgeInsets.only(right: 20),
                             child: Text(
                               "Mine Private Collection",
                               style: TextStyle(fontSize: 20, color: bgNav),
@@ -267,10 +263,11 @@ class DetailView extends GetView<DetailController> {
                         color: subjudul,
                       ),
                     ),
-                    Row(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          margin: EdgeInsets.only(top: 10),
+                          margin: EdgeInsets.only(top: 10, left: 10),
                           child: Text(
                             "Deskripsi Produk",
                             style: TextStyle(
@@ -279,19 +276,15 @@ class DetailView extends GetView<DetailController> {
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
-                      ],
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 10),
-                      width: lebar,
-                      child: Text(
-                        "Mine. ETHEREAL Eau De Parfum 50mi glass perfume bottle in hard box packaging • ETHEREAL • With facets that highlight a side ...",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w400),
-                      ),
-                    ),
-                    Row(
-                      children: [
+                        Container(
+                          margin: EdgeInsets.only(top: 10, left: 10),
+                          width: lebar * 0.90,
+                          child: Text(
+                            "Mine. ETHEREAL Eau De Parfum 50mi glass perfume bottle in hard box packaging • ETHEREAL • With facets that highlight a side ...",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w400),
+                          ),
+                        ),
                         TextButton(
                             onPressed: () {},
                             child: Text(
@@ -309,26 +302,31 @@ class DetailView extends GetView<DetailController> {
                       padding: EdgeInsets.fromLTRB(10, 5, 10, 0),
                       // margin: EdgeInsets.fromLTRB(left, top, right, bottom),
                       child: Row(
-                        // mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
                             // margin: EdgeInsets.only(r: 20),
                             child: Image.asset("image/parfum2.png"),
                           ),
                           Container(
-                            margin: EdgeInsets.only(right: 50, left: 20),
+                            margin: EdgeInsets.only(right: 100, left: 0),
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
                                   child: Row(
                                     children: [
-                                      Image.asset("image/verify.png"),
-                                      Text("Mine. Parfumery")
+                                      Container(
+                                        child: Image.asset("image/verify.png"),
+                                      ),
+                                      Container(
+                                        child: Text("Mine. Parfumery"),
+                                      )
                                     ],
                                   ),
                                 ),
                                 Container(
-                                    margin: EdgeInsets.only(top: 10),
+                                    margin: EdgeInsets.only(top: 5),
                                     child: Row(
                                       children: [
                                         Text("Online "),
@@ -771,7 +769,7 @@ class DetailView extends GetView<DetailController> {
               Container(
                 margin: EdgeInsets.only(top: 10),
                 width: lebar,
-                height: 10,
+                height: 7,
                 decoration: BoxDecoration(color: subjudul),
               ),
               Column(
@@ -877,7 +875,7 @@ class DetailView extends GetView<DetailController> {
                             Text(
                               "Zain Ekstrom Bothman",
                               style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               "31 ulasan lengkap ∙ 17 terbantu",
@@ -956,11 +954,10 @@ class DetailView extends GetView<DetailController> {
                           Container(
                             margin:
                                 EdgeInsets.only(right: lebar * 0.17, top: 10),
-                            width: lebar * 0.68,
+                            width: lebar,
                             child: Text(
                               "saya selalu tertarik dengan produk lokal, buat sayaaroma nomor 2 karena subyektif, Kemasan nomor selanjutnya, tapi yang perlu di",
-                              textAlign: TextAlign.start,
-                              style: TextStyle(fontSize: 15),
+                              style: TextStyle(fontSize: 20),
                             ),
                           ),
                           // Container(
@@ -1001,7 +998,126 @@ class DetailView extends GetView<DetailController> {
                         ))
                   ],
                 ),
-              )
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 25, top: 5, bottom: 5),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 45,
+                      height: 45,
+                      child: Image.asset(
+                        "image/puan.png",
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10),
+                      child: Text(
+                        "Rayna Stanton",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10),
+                      child: Text("∙ Apr 2022"),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: lebar * 0.80,
+                margin: EdgeInsets.only(left: 0, right: 5, top: 10),
+                child: Text(
+                  "hai! kira-kira kapan restock lagi? thanks in advance",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: lebar * 0.11, top: 10),
+                child: Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(10, 5, 5, 0),
+                      // margin: EdgeInsets.fromLTRB(left, top, right, bottom),
+                      width: 25,
+                      height: 25,
+                      child: Image.asset(
+                        "image/parfum2.png",
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+                      margin: EdgeInsets.only(left: 0, top: 10),
+                      width: 55,
+                      height: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.green.shade100,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Text(
+                        "penjual",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: bgNav),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+                      margin: EdgeInsets.only(left: 5, top: 10),
+                      width: 70,
+                      height: 20,
+                      child: Text(
+                        "∙ Apr 2022",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: subjudul),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  top: 10,
+                ),
+                width: lebar * 0.68,
+                child: Text(
+                  "Halo kak, maaf banget yak karena kamu jadi nunggu, saat ini kita masih out of stock ya ...",
+                  style: TextStyle(fontSize: 15),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 25),
+                width: lebar,
+                height: tinggi * 0.008,
+                decoration: BoxDecoration(color: subjudul),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 30),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 10,
+                      height: 10,
+                      child: Icon(Icons.info_outline),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 15, left: 20),
+                      child: Row(
+                        children: [
+                          Text("Produk bermasalah?"),
+                          TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Laporkan",
+                                style: TextStyle(color: bgNav),
+                              ))
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
