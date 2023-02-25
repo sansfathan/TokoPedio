@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, unused_local_variable
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -13,7 +15,7 @@ class HomeAdminView extends GetView<HomeAdminController> {
     double lebar = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
-          title: Text('Slider'),
+          title: Text('Slider & Produk DATAS'),
           centerTitle: true,
         ),
         body: Container(
@@ -30,9 +32,12 @@ class HomeAdminView extends GetView<HomeAdminController> {
                           icon: 'image/menu/indo.png', text: 'Slider Data'),
                     ),
                   ),
-                  Container(
-                    child: CustomMenu(
-                        icon: 'image/menu/semua.png', text: 'Slider'),
+                  InkWell(
+                    onTap: () => Get.toNamed(Routes.PRODUK_DATA),
+                    child: Container(
+                      child: CustomMenu(
+                          icon: 'image/menu/semua.png', text: 'Produk'),
+                    ),
                   )
                 ],
               )

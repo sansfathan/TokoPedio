@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: "Application",
               initialRoute: snapshot.data != null
-                  ? Routes.HOME_ADMIN
+                  ? Routes.HOME
                   : Routes.SPLASH_SCREEN,
               getPages: AppPages.routes,
             );

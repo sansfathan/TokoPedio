@@ -12,6 +12,7 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
   @override
   Widget build(BuildContext context) {
     double tinggi = MediaQuery.of(context).size.height;
+    // ignore: unused_local_variable
     double lebar = MediaQuery.of(context).size.width;
     final defaultPinTheme = PinTheme(
       width: 56,

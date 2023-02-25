@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 class OtpVerificationController extends GetxController {
+  // ignore: todo
   //TODO: Implement OtpVerificationController
 
   final count = 0.obs;

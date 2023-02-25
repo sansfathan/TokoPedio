@@ -1,11 +1,16 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:tokopedia/app/controllers/slider_controller.dart';
 import 'package:tokopedia/config/warna.dart';
 
 import '../controllers/create_slider_controller.dart';
 
 class CreateSliderView extends GetView<CreateSliderController> {
+  final sliderC = Get.put(SliderController());
+  final controller = Get.put(CreateSliderController());
   @override
   Widget build(BuildContext context) {
     double tinggi = MediaQuery.of(context).size.height;
@@ -41,14 +46,7 @@ class CreateSliderView extends GetView<CreateSliderController> {
                     padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
                     child: Column(
                       children: [
-                        CustomInput(
-                            controller: controller.gambarSlider,
-                            label: 'Link gambar Slider',
-                            hint: 'Masukkan gambar',
-                            obscure: false),
-                        SizedBox(
-                          height: 20,
-                        ),
+                        ElevatedButton(onPressed: () => controller.uploadGambar(), child: Text("Upload Gambar")),
                         CustomInput(
                             controller: controller.deskripsiSlider,
                             label: 'Deskripsi Slider',
@@ -86,6 +84,36 @@ class CreateSliderView extends GetView<CreateSliderController> {
                         )
                       ],
                     )),
+                Container(
+                  padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
+                  margin: EdgeInsets.only(top: 40),
+                  child: InkWell(
+                      onTap: () {
+                        sliderC.addData(
+                            controller.active.value,
+                            controller.deskripsiSlider.text,
+                            controller.gambarSlider.text);
+                      },
+                      child: Container(
+                        width: lebar,
+                        height: 55,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6),
+                            color: bgNav),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'Buat Slider',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      )),
+                )
               ],
             ),
           )),

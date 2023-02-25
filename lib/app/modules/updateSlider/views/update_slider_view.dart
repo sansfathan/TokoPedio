@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -17,7 +19,7 @@ class UpdateSliderView extends GetView<UpdateSliderController> {
     return Obx(() => SafeArea(
             child: Scaffold(
           body: SingleChildScrollView(
-             child: Container(
+            child: Container(
               child: Column(
                 children: [
                   Container(
@@ -33,7 +35,7 @@ class UpdateSliderView extends GetView<UpdateSliderController> {
                               bottomRight: Radius.circular(5))),
                       child: Center(
                         child: Text(
-                          "👉 Create Slider 👈",
+                          "👉 Update Slider 👈",
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -111,7 +113,7 @@ class UpdateSliderView extends GetView<UpdateSliderController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
-                              'Buat Slider',
+                              'Update Slider',
                               style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.white,
@@ -126,7 +128,8 @@ class UpdateSliderView extends GetView<UpdateSliderController> {
               ),
             ),
           ),
-        )));}
+        )));
+  }
 }
 
 Widget CustomInput({label, controller, obscure, hint, icon, initValue}) {

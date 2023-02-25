@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class SplashScreenController extends GetxController {
+  // ignore: todo
   //TODO: Implement SplashScreenController
   final showhidepw = false.obs;
   changeEyes() => showhidepw.toggle();

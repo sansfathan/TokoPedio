@@ -22,6 +22,8 @@ import 'package:tokopedia/app/modules/login_with_phone/bindings/login_with_phone
 import 'package:tokopedia/app/modules/login_with_phone/views/login_with_phone_view.dart';
 import 'package:tokopedia/app/modules/otp_verification/bindings/otp_verification_binding.dart';
 import 'package:tokopedia/app/modules/otp_verification/views/otp_verification_view.dart';
+import 'package:tokopedia/app/modules/produk_data/bindings/produk_data_binding.dart';
+import 'package:tokopedia/app/modules/produk_data/views/produk_data_view.dart';
 import 'package:tokopedia/app/modules/sliderData/bindings/slider_data_binding.dart';
 import 'package:tokopedia/app/modules/sliderData/views/slider_data_view.dart';
 import 'package:tokopedia/app/modules/splashScreen/bindings/splash_screen_binding.dart';
@@ -106,6 +108,11 @@ class AppPages {
       name: _Paths.CREATE_SLIDER,
       page: () => CreateSliderView(),
       binding: CreateSliderBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUK_DATA,
+      page: () => ProdukDataView(),
+      binding: ProdukDataBinding(),
     ),
   ];
 }

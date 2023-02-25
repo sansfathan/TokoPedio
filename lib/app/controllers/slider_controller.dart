@@ -1,15 +1,24 @@
+// ignore_for_file: unused_import, duplicate_import
+
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:tokopedia/config/warna.dart';
+import 'dart:io';
 
 import '../routes/app_pages.dart';
 
 class SliderController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  FirebaseStorage storage = FirebaseStorage.instance;
+  String url = '';
+  File? path;
 
   addData(bool activeSlider, String dashSlider, String gambarSlider) async {
     CollectionReference slider = firestore.collection("slider");
@@ -23,6 +32,7 @@ class SliderController extends GetxController {
       await slider.add(sliderData).then((DocumentReference doc) =>
           Get.defaultDialog(
               title: "Alert", middleText: "Berhasil menambahkan data"));
+      Get.toNamed(Routes.HOME_ADMIN);
     } catch (e) {
       Get.defaultDialog(title: "Alert", middleText: "Gagal menambahkan data");
     }
@@ -80,6 +90,31 @@ class SliderController extends GetxController {
     } catch (e) {
       Get.defaultDialog(title: 'Alert', middleText: 'gagal mendelete data');
       print(e);
+    }
+  }
+
+  addPhoto() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      File file = File(result.files.single.path!);
+      String namaFile = result.files.first.name;
+      url = namaFile;
+
+      // try {
+      await storage.ref("${namaFile}").putFile(file);
+      final data = await storage.ref("${namaFile}").getDownloadURL();
+      url = data;
+
+      print("Success ======================================");
+      print(url);
+
+      return url;
+      // } catch (e) {
+      //   print("gagal upload ==============================================");
+      // }
+    } else {
+      print("tidak mengirim filename ===================================");
     }
   }
 }

@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
-class HomeAdminController extends GetxController {
+class ProdukDataController extends GetxController {
   // ignore: todo
-  //TODO: Implement HomeAdminController
+  //TODO: Implement ProdukDataController
 
   final count = 0.obs;
   @override

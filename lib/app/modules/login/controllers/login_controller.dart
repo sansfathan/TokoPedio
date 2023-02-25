@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
+  // ignore: todo
   //TODO: Implement LoginController
   final showhidepw = false.obs;
   changeEyes() => showhidepw.toggle();
