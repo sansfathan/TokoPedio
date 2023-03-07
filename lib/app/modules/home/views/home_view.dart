@@ -20,6 +20,7 @@ class HomeView extends GetView<HomeController> {
   final logOut = Get.put(AuthControllerController());
   final sliderC = Get.put(SliderController());
   final produkC = Get.put(ProdukController());
+  final homeC = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     double tinggi = MediaQuery.of(context).size.height;
@@ -241,7 +242,7 @@ class HomeView extends GetView<HomeController> {
               margin: EdgeInsets.fromLTRB(0, 10, 0, 25),
               // padding: EdgeInsets.fromLTRB(left, top, right, bottom),
               width: lebar,
-              height: 320,
+              height: 345,
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                 begin: Alignment.topRight,
@@ -259,214 +260,162 @@ class HomeView extends GetView<HomeController> {
                       // margin: EdgeInsets.only(right: 32),
                       child: Image.asset('image/Kejar.png'),
                     ),
-                    Container(
-                      // margin: EdgeInsets.only(left: 15),
-                      // padding: EdgeInsets.fromLTRB(20, 10, 30, 20),
+                    
+                    FutureBuilder<QuerySnapshot<Object?>>(
+                      future: produkC.getDataDiskon(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          var dataPromo = snapshot.data!.docs;
+                          return Container(
+                            // margin: EdgeInsets.only(left: 15),
+                            // padding: EdgeInsets.fromLTRB(20, 10, 30, 20),
 
-                      child: Row(
-                        children: [
-                          InkWell(
-                            onTap: () => Get.toNamed(Routes.DETAIL),
-                            child: Container(
-                              margin: EdgeInsets.fromLTRB(30, 10, 0, 10),
-                              width: 200,
-                              height: tinggi * 0.50,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    // margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
-                                    // padding: EdgeInsets.fromLTRB(left, top, right, bottom),
-                                    width: 190,
-                                    height: 160,
-                                    child: Image.asset(
-                                      "image/Masker.png",
-                                      // fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(
-                                      10,
-                                      10,
-                                      0,
-                                      0,
-                                    ),
-                                    child: Text(
-                                      "Rp 1.000",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20),
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Container(
-                                        padding: EdgeInsets.all(2),
-                                        margin:
-                                            EdgeInsets.fromLTRB(10, 5, 0, 0),
-                                        width: 30,
-                                        height: 20,
-                                        decoration:
-                                            BoxDecoration(color: bgRedB),
-                                        child: Text(
-                                          "92%",
-                                          style: TextStyle(color: bgRed),
+                            child: Row(
+                              children:
+                                  List.generate(dataPromo.length, (index) {
+                                return InkWell(
+                                  onTap: () => Get.toNamed(Routes.DETAIL, arguments: dataPromo[index]),
+                                  child: Container(
+                                    margin: EdgeInsets.fromLTRB(30, 10, 0, 10),
+                                    width: 200,
+                                    height: tinggi * 0.59,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          // margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
+                                          // padding: EdgeInsets.fromLTRB(left, top, right, bottom),
+                                          width: 190,
+                                          height: 160,
+                                          child: Image.network(
+                                            (dataPromo[index].data() as Map<
+                                                String, dynamic>)["gambar"],
+                                            // fit: BoxFit.cover,
+                                          ),
                                         ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.fromLTRB(5, 5, 0, 0),
-                                        child: Text(
-                                          "Rp 12.546",
-                                          style: TextStyle(
-                                              color: subjudul,
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                            10,
+                                            10,
+                                            0,
+                                            0,
+                                          ),
+                                          child: Text(
+                                            (dataPromo[index].data() as Map<
+                                                String, dynamic>)["nama"],
+                                            // fit: BoxFit.cover,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15),
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                            10,
+                                            10,
+                                            0,
+                                            0,
+                                          ),
+                                          child: Text(
+                                            (dataPromo[index].data() as Map<
+                                                    String, dynamic>)["harga"]
+                                                .toString(),
+                                            // fit: BoxFit.cover,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15),
+                                          ),
+                                        ),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              padding: EdgeInsets.all(2),
+                                              margin: EdgeInsets.fromLTRB(
+                                                  10, 5, 0, 0),
+                                              width: 30,
+                                              height: 20,
                                               decoration:
-                                                  TextDecoration.lineThrough),
+                                                  BoxDecoration(color: bgRedB),
+                                              child: Text(
+                                                (dataPromo[index].data() as Map<
+                                                        String,
+                                                        dynamic>)["diskon"]
+                                                    .toString(),
+                                                style: TextStyle(color: bgRed),
+                                              ),
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.fromLTRB(
+                                                  5, 5, 0, 0),
+                                              child: Text(
+                                                "Rp 12.546",
+                                                style: TextStyle(
+                                                    color: subjudul,
+                                                    decoration: TextDecoration
+                                                        .lineThrough),
+                                              ),
+                                            )
+                                          ],
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Container(
-                                        margin:
-                                            EdgeInsets.fromLTRB(10, 5, 0, 0),
-                                        child: Image.asset("image/verify.png"),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.fromLTRB(5, 5, 0, 0),
-                                        child: Text(
-                                          "Kab. Tangerang",
-                                          style: TextStyle(color: subjudul),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.fromLTRB(
+                                                  10, 5, 0, 0),
+                                              child: Image.asset(
+                                                  "image/verify.png"),
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.fromLTRB(
+                                                  5, 5, 0, 0),
+                                              child: Text(
+                                                "Kab. Tangerang",
+                                                style:
+                                                    TextStyle(color: subjudul),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Container(
-                                    // margin: EdgeInsets.only(bottom: 10, top: 10),
-                                    // padding: EdgeInsets.fromLTRB(left, top, right, bottom),
+                                        Container(
+                                          // margin: EdgeInsets.only(bottom: 10, top: 10),
+                                          // padding: EdgeInsets.fromLTRB(left, top, right, bottom),
 
-                                    margin: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                                    child: StepProgressIndicator(
-                                      totalSteps: 100,
-                                      currentStep: 80,
-                                      size: 5,
-                                      padding: 0,
-                                      selectedColor: bgRed,
-                                      unselectedColor: Color(0xffeeeeee),
-                                      roundedEdges: Radius.circular(2),
+                                          margin:
+                                              EdgeInsets.fromLTRB(5, 10, 5, 0),
+                                          child: StepProgressIndicator(
+                                            totalSteps: 100,
+                                            currentStep: 80,
+                                            size: 5,
+                                            padding: 0,
+                                            selectedColor: bgRed,
+                                            unselectedColor: Color(0xffeeeeee),
+                                            roundedEdges: Radius.circular(2),
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(
+                                              top: 15, left: 10),
+                                          child: Text(
+                                            "Segera Habis",
+                                            style: TextStyle(color: subjudul),
+                                          ),
+                                        )
+                                      ],
                                     ),
                                   ),
-                                  Container(
-                                    margin: EdgeInsets.only(top: 15, left: 10),
-                                    child: Text(
-                                      "Segera Habis",
-                                      style: TextStyle(color: subjudul),
-                                    ),
-                                  )
-                                ],
-                              ),
+                                );
+                              }),
                             ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(20, 10, 0, 10),
-                            width: 160,
-                            height: tinggi * 0.50,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 120,
-                                  child: Image.asset(
-                                    "image/Indomie.png",
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(
-                                    10,
-                                    10,
-                                    0,
-                                    0,
-                                  ),
-                                  child: Text(
-                                    "Rp 103.000",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.all(2),
-                                      margin: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                                      width: 30,
-                                      height: 20,
-                                      decoration: BoxDecoration(color: bgRedB),
-                                      child: Text(
-                                        "92%",
-                                        style: TextStyle(color: bgRed),
-                                      ),
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(5, 5, 0, 0),
-                                      child: Text(
-                                        "Rp 12.546",
-                                        style: TextStyle(
-                                            color: subjudul,
-                                            decoration:
-                                                TextDecoration.lineThrough),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                                      child: Image.asset("image/verify.png"),
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(5, 5, 0, 5),
-                                      // padding: EdgeInsets.fromLTRB(left, top, right, bottom),
-                                      child: Text(
-                                        "Kab. Tangerang",
-                                        style: TextStyle(color: subjudul),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Container(
-                                  // margin: EdgeInsets.only(bottom: 10, top: 10),
-                                  margin: EdgeInsets.fromLTRB(5, 10, 0, 0),
-                                  child: StepProgressIndicator(
-                                    totalSteps: 100,
-                                    currentStep: 30,
-                                    size: 5,
-                                    padding: 0,
-                                    selectedColor: bgRed,
-                                    unselectedColor: Color(0xffeeeeee),
-                                    roundedEdges: Radius.circular(2),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(top: 15, left: 10),
-                                  child: Text(
-                                    "Tersedia",
-                                    style: TextStyle(color: subjudul),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                          );
+                        } else {
+                          return SizedBox();
+                        }
+                      },
                     )
                   ],
                 ),

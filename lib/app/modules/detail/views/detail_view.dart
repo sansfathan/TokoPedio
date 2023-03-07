@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:tokopedia/app/controllers/produk_controller.dart';
 import 'package:tokopedia/config/warna.dart';
 
 import '../controllers/detail_controller.dart';
@@ -8,6 +9,18 @@ import '../controllers/detail_controller.dart';
 class DetailView extends GetView<DetailController> {
   @override
   Widget build(BuildContext context) {
+    final data = Get.arguments;
+    @override
+    int discount =
+        int.parse((data.data() as Map<String, dynamic>)['diskon'].toString());
+    String title = (data.data() as Map<String, dynamic>)['nama'].toString();
+    String image = (data.data() as Map<String, dynamic>)['gambar'].toString();
+    int price =
+        int.parse((data.data() as Map<String, dynamic>)['harga'].toString());
+    // String rate =
+    //     (data.data() as Map<String, dynamic>)['ratingProduk'].toString();
+
+    final produkController = Get.put(ProdukController());
     double tinggi = MediaQuery.of(context).size.height;
     double lebar = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -71,8 +84,8 @@ class DetailView extends GetView<DetailController> {
               Container(
                 margin: EdgeInsets.only(top: 10),
                 width: lebar,
-                child: Image.asset(
-                  "image/Parfum.png",
+                child: Image.network(
+                  data['gambar'],
                   fit: BoxFit.fill,
                 ),
               ),
@@ -82,7 +95,7 @@ class DetailView extends GetView<DetailController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Rp370.000",
+                      data['harga'].toString(),
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
@@ -92,12 +105,16 @@ class DetailView extends GetView<DetailController> {
                   ],
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(top: 20, left: 10, right: 10),
-                child: Text(
-                  "Mine. Perfumery ETHEREAL - 50ml Eau De Parfum",
-                  style: TextStyle(fontSize: 25),
-                ),
+              Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 5, left: 10, right: 10),
+                    child: Text(
+                      data['nama'],
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ),
+                ],
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,

@@ -133,4 +133,30 @@ class ProdukController extends GetxController {
   //     print("tidak mengirim filename ===================================");
   //   }
 
+  filterData() async {
+    final result = await firestore
+        .collection('produk')
+        // .where('harga', isLessThanOrEqualTo: 500200)
+        // .orderBy('harga', descending: true)
+        // .limitToLast(5)
+        .where('flashSale', isEqualTo: true)
+        .get();
+    print(result.docs.length);
+    print('*************************');
+
+    if (result.docs.length > 0) {
+      result.docs.forEach((element) {
+        print(element.data());
+      });
+    } else {
+      print("tidak ada data");
+    }
+  }
+  
+  Future<QuerySnapshot<Object?>> getDataDiskon() async {
+    
+    CollectionReference produk = firestore.collection("produk");
+
+    return await produk.where('flashSale', isEqualTo: true).get();
+  }
 }
