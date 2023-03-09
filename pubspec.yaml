@@ -16,6 +16,7 @@ dependencies:
   firebase_storage: ^11.0.1
   flutter:
     sdk: flutter
+  flutter_facebook_auth: ^5.0.8
   get: 4.6.5
   google_sign_in: ^5.4.4
   intl_phone_number_input: ^0.7.2

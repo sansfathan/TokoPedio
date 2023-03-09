@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:tokopedia/app/routes/app_pages.dart';
@@ -88,6 +89,19 @@ class AuthControllerController extends GetxController {
     } catch (e) {
       print(e);
     }
+  }
+  
+  Future<UserCredential> signInWithFacebook() async {
+    // Trigger the sign-in flow
+    final LoginResult loginResult = await FacebookAuth.instance.login();
+
+    // Create a credential from the access token
+    final OAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+    // Once signed in, return the UserCredential
+    Get.offAllNamed(Routes.HOME);
+    return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
   }
 
   Future<UserCredential> signInWithGoogle() async {

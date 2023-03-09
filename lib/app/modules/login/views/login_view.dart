@@ -159,7 +159,7 @@ class LoginView extends GetView<LoginController> {
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.white,
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () => authC.signInWithFacebook(),
                                   child: Row(
                                     children: [
                                       Image.asset("image/Facebook.png"),
